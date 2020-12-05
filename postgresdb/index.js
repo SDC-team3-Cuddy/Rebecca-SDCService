@@ -1,8 +1,7 @@
 /* eslint-disable no-console */
-const mysql = require('mysql');
-const config = require('./config.js');
+const postgres = require('postgresql');
 
-const connection = mysql.createConnection(config);
+// const connection = mysql.createConnection(config);
 
 // Read-All
 const getValues = (callback) => {
@@ -162,6 +161,10 @@ const deleteStyle = (callId, callback) => {
   });
 };
 
+const loadDB = (chunk, encoding) => {
+
+};
+
 module.exports = {
   getValues,
   getStyles,
@@ -173,4 +176,5 @@ module.exports = {
   updateStyle,
   deleteItem,
   deleteStyle,
+  loadDB,
 };

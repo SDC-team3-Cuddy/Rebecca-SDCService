@@ -2,7 +2,6 @@ import React from 'react';
 import styles from '../css/AddToList.module.css';
 
 class AddToList extends React.Component {
-
   constructor(props) {
     super(props);
   }

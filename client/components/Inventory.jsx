@@ -3,7 +3,6 @@ import React from 'react';
 import styles from '../css/Inventory.module.css';
 
 class Inventory extends React.Component {
-
   constructor(props) {
     super(props);
   }
@@ -12,7 +11,11 @@ class Inventory extends React.Component {
     return (
       <div className={styles.inventorywrapper}>
         <div className={styles.inventory}>
-          <span> {this.props.inventory} </span>
+          <span>
+            {' '}
+            {this.props.inventory}
+            {' '}
+          </span>
         </div>
       </div>
     );

@@ -3,7 +3,6 @@ import React from 'react';
 import styles from '../css/Message.module.css';
 
 class Message extends React.Component {
-
   constructor(props) {
     super(props);
   }

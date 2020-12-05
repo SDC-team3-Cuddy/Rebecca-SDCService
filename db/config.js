@@ -1,6 +1,8 @@
+const Password = require('../rootConfig.js');
+
 module.exports = {
   host: 'localhost',
   user: 'root',
-  password: '',
+  password: Password.Password,
   database: 'Products',
 };

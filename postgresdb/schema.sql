@@ -1,23 +1,23 @@
-DROP DATABASE IF EXISTS Products;
+/*DROP DATABASE IF EXISTS products;
 
-CREATE DATABASE Products;
+CREATE DATABASE products;
 
-USE Products;
+USE products;*/
 
 CREATE TABLE Items (
-  id INT(11) NOT NULL AUTO_INCREMENT,
+  id BIGSERIAL NOT NULL,
   description TEXT NOT NULL,
   price DECIMAL (10, 2),
   PRIMARY KEY (id)
 );
 
 CREATE TABLE Styles (
-  id INT (11) NOT NULL AUTO_INCREMENT,
+  id BIGSERIAL NOT NULL,
   style TEXT NOT NULL,
-  quantity INT(11) NOT NULL,
+  quantity INT NOT NULL,
   image_url TEXT NOT NULL,
-  PRIMARY KEY(id)
-)
+  PRIMARY KEY (id)
+);
 
 /*  Execute this file from the command line by typing:
  *    mysql -u root < server/schema.sql

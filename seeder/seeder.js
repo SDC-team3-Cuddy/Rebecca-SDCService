@@ -1,38 +1,46 @@
-const mysql = require('mysql');
-const config = require('../db/config.js');
+/* eslint-disable no-plusplus */
 const faker = require('faker');
-const connection = mysql.createConnection(config);
+const papa = require('papaparse');
+const fs = require('fs');
 
-for(var i = 0; i < 100; i++) {
-    var randomPrice = faker.random.float();
-    var randomDescription = faker.commerce.productDescription();
-    var sql = 'INSERT INTO Items (description, price) VALUES (?, ?)';
-    var toInsert = [randomDescription, randomPrice];
-    connection.query(sql, toInsert, function(err, response) {
-      if(err) {
-        console.log('couldn\'t connect to the database from seeder.js ');
-      }
-      console.log('successfully inserted items to database via seeder.js');
-    });
-}
+const makeCSV = (data) => papa.unparse(data);
 
-for(var i = 0; i < 100; i++) {
+const makeItem = () => {
+  const item = [];
+  item.push(faker.commerce.productDescription());
+  item.push(faker.random.float());
+  return item;
+};
 
-  var style = faker.commerce.color();
-  let image = `https://guitarimages.s3-us-west-2.amazonaws.com/Guitar_Image${i}.jpg`;
-  var quantity = faker.random.number(1, 10);
-  var sql = 'INSERT INTO Styles (style, image_url, quantity) VALUES (?, ?, ?)';
-  var toInsert = [style, image, quantity];
+const makeStyle = (num) => {
+  const style = [];
+  style.push(faker.commerce.color());
+  style.push(faker.random.number(1, 10));
+  style.push(`https://guitarimages.s3-us-west-2.amazonaws.com/Guitar_Image${num}.jpg`);
+  return style;
+};
 
-  connection.query(sql, toInsert, function(err, response) {
-    if(err) {
-      console.log('Could not insert items into Styles database');
-    }
-    console.log('successfully inserted items into Styles database');
-  });
-}
+const generateDataChunk = (size) => {
+  const chunk = { items: [], styles: [] };
+  for (let i = 0; i < size; i++) {
+    chunk.items.push(makeItem());
+    chunk.styles.push(makeStyle((Math.random() * 99) + 1));
+  }
+  return chunk;
+};
 
+const writeCSV = (CSV, Filename) => {
+  const File = fs.createWriteStream(Filename);
+  File.write(CSV, 'utf8');
+  File.end();
+};
 
+module.exports = {
+  makeCSV,
+  generateDataChunk,
+  makeItem,
+  makeStyle,
+  writeCSV,
+};
 
-
-
+// writeCSV('Hello World', 'hello_there.csv');

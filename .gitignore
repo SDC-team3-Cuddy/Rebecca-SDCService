@@ -1,6 +1,7 @@
 ##AWS key ##
 *.pem
 login.sh
+rootConfig.js
 
 ## MAC files ##
 .DS_Store
@@ -9,6 +10,8 @@ login.sh
 npm
 npm-debug.log
 node_modules/
+
+csv/
 
 pids
 *.pid
