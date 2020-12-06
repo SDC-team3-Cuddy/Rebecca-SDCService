@@ -5,9 +5,20 @@ const fs = require('fs');
 
 const makeCSV = (data) => papa.unparse(data);
 
+const removeCommas = (string) => {
+  const stringArr = string.split('');
+  for (let i = 0; i < stringArr.length; i++) {
+    if (stringArr[i] === ',') {
+      stringArr[i] = ';';
+    }
+  }
+  return stringArr.join('');
+};
+
 const makeItem = () => {
   const item = [];
-  item.push(faker.commerce.productDescription());
+  const description = removeCommas(faker.commerce.productDescription());
+  item.push(description);
   item.push(faker.random.float());
   return item;
 };
@@ -41,6 +52,5 @@ module.exports = {
   makeItem,
   makeStyle,
   writeCSV,
+  removeCommas,
 };
-
-// writeCSV('Hello World', 'hello_there.csv');

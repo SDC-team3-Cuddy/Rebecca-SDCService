@@ -1,9 +1,36 @@
 /* eslint-disable no-console */
-const postgres = require('postgresql');
+/* INITIALIZATION */
+const { Pool } = require('./pool');
+const { Password } = require('../rootConfig.js');
+const write = require('./writedata');
+const seed = require('../seeder/seeder');
 
-// const connection = mysql.createConnection(config);
+const productsConfig = {
+  host: 'localhost',
+  port: 5432,
+  database: 'products',
+  user: 'becca',
+  password: Password,
+};
 
-// Read-All
+const connection = new Pool();
+connection.connect(productsConfig)
+  .then(() => {
+    console.log('connected to postgres database "products"');
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+
+/* DATABASE SEEDING */
+const createData = (connection, size) => {
+
+};
+
+createData(connection, 100);
+
+/* API-CALL DATABASE QUERIES */
+// Read-All (GET)
 const getValues = (callback) => {
   const sql = 'SELECT * FROM Items';
   connection.query(sql, (err, response) => {
@@ -27,7 +54,7 @@ const getStyles = (callback) => {
   });
 };
 
-// Read-One -- takes a num representing the id number of a row in the table
+// Read-One (GET) -- takes a num representing the id number of a row in the table
 const readItem = (callId, callback) => {
   const sql = `SELECT * FROM Items WHERE id=${callId}`;
   connection.query(sql, (err, response) => {
@@ -50,7 +77,7 @@ const readStyle = (callId, callback) => {
   });
 };
 
-// Create -- takes an object, translates it to SQL syntax, Inserts into db
+// Create (POST) -- takes an object, translates it to SQL syntax, Inserts into db
 const addItem = (itemObj, callback) => {
   const sql = `INSERT INTO Items (description, price) VALUES (${itemObj.description}, ${itemObj.price})`;
   connection.query(sql, (err, response) => {
@@ -73,7 +100,7 @@ const addStyle = (styleObj, callback) => {
   });
 };
 
-// Update -- takes an object, checks its key names, updates those columns @ id
+// Update (PUT) -- takes an object, checks its key names, updates those columns @ id
 const updateItem = (itemObj, callback) => {
   let sql;
 
@@ -138,7 +165,7 @@ const updateStyle = (styleObj, callback) => {
   });
 };
 
-// Delete
+// Delete (DELETE)
 const deleteItem = (callId, callback) => {
   const sql = `DELETE FROM Items WHERE id=${callId}`;
   connection.query(sql, (err, response) => {
@@ -161,10 +188,6 @@ const deleteStyle = (callId, callback) => {
   });
 };
 
-const loadDB = (chunk, encoding) => {
-
-};
-
 module.exports = {
   getValues,
   getStyles,
@@ -176,5 +199,5 @@ module.exports = {
   updateStyle,
   deleteItem,
   deleteStyle,
-  loadDB,
+  createData,
 };

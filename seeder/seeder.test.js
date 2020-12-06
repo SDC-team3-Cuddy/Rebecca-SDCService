@@ -67,4 +67,22 @@ describe('seeder.js', () => {
       });
     });
   });
+
+  context('removeCommas', () => {
+    it('should be a function', () => {
+      expect(seeder.removeCommas).to.be.a('function');
+    });
+
+    it('should remove commas from a passed in string', () => {
+      const inputString = 'This, has, a, few, commas, in, it';
+      const testString = seeder.removeCommas(inputString);
+      expect(testString.indexOf(',')).to.equal(-1);
+    });
+
+    it('should replace commas with a semi-colon at the same index', () => {
+      const inputString = 'This, string has one comma at index 4';
+      const testString = seeder.removeCommas(inputString);
+      expect(testString.indexOf(';')).to.equal(4);
+    });
+  });
 });
