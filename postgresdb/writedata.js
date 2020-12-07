@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-const copyToDB = (connection, itemsPath = undefined, stylesPath = undefined) => {
+const copyToDB = (connection, itemsPath = undefined, stylesPath = undefined, callback) => {
   if (itemsPath) {
     const sql = `COPY items(description, price) FROM '${itemsPath}' DELIMITER ',';`;
     connection.query(sql)
@@ -21,6 +21,8 @@ const copyToDB = (connection, itemsPath = undefined, stylesPath = undefined) => 
         console.error(err);
       });
   }
+
+  callback();
 };
 
 module.exports = {

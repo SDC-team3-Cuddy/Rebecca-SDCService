@@ -1,40 +1,28 @@
 /* eslint-disable no-console */
 /* eslint-disable no-undef */
 const chai = require('chai');
-const sinon = require('sinon');
-const sinonChai = require('sinon-chai');
 const fs = require('fs');
 const path = require('path');
 const seeder = require('./seeder');
 
-chai.use(sinonChai);
 const { expect } = chai;
 
 describe('seeder.js', () => {
-  context('generateDataChunk', () => {
+  context('generateDataLine', () => {
     it('should be a function', () => {
-      expect(seeder.generateDataChunk).to.be.a('function');
+      expect(seeder.generateDataLine).to.be.a('function');
     });
 
-    it('should generate an array of 100 item arrays with a price and description', () => {
-      const itemSpy = sinon.spy(seeder, 'makeItem');
-      const sampleChunk = seeder.generateDataChunk(100);
-      const sampleItem = sampleChunk.items[0];
-      expect(sampleItem[1]).to.be.a('number'); // price
-      expect(sampleItem[0]).to.be.a('string'); // description
-      expect(sampleChunk.items.length).to.equal(100);
-      itemSpy.restore();
+    it('should generate a single CSV line', () => {
+      const sampleItem = seeder.generateDataLine('item');
+      console.log(`      ${sampleItem}`);
+      expect(sampleItem).to.be.a('string'); // description
     });
 
     it('should generate an array of 100 style arrays with a color, image_url, and quantity', () => {
-      const styleSpy = sinon.spy(seeder, 'makeStyle');
-      const sampleChunk = seeder.generateDataChunk(100);
-      const sampleStyle = sampleChunk.styles[0];
-      expect(sampleStyle[1]).to.be.a('number'); // quantity
-      expect(sampleStyle[2]).to.be.a('string'); // url
-      expect(sampleStyle[0]).to.be.a('string'); // color
-      expect(sampleChunk.styles.length).to.equal(100);
-      styleSpy.restore();
+      const sampleStyle = seeder.generateDataLine('style');
+      console.log(`      ${sampleStyle}`);
+      expect(sampleStyle).to.be.a('string');
     });
   });
 
@@ -44,8 +32,7 @@ describe('seeder.js', () => {
     });
 
     it('should return a CSV when passed an array of arrays', () => {
-      const data = seeder.generateDataChunk(1);
-      const itemCSV = seeder.makeCSV(data.items);
+      const itemCSV = seeder.generateDataLine('item');
       console.log(`        itemCSV: ${itemCSV}`);
       // console.log(papa.parse(itemCSV));
       // eslint-disable-next-line no-unused-expressions
@@ -58,12 +45,10 @@ describe('seeder.js', () => {
       expect(seeder.writeCSV).to.be.a('function');
     });
 
-    it('should write a CSV to a given filepath', () => {
-      const data = seeder.generateDataChunk(10);
-      const CSV = seeder.makeCSV(data.styles);
+    it('should write a CSV line to a given filepath', () => {
       const testFileName = path.join(__dirname, '../csv/test_csv_files/testCSV.csv');
-      seeder.writeCSV(CSV, testFileName, () => {
-        expect(fs.readFileSync(testFileName).toString()).to.equal('hi');
+      seeder.writeCSV(1, testFileName, 'item', (CSV) => {
+        expect(fs.readFileSync(testFileName).toString()).to.equal(CSV);
       });
     });
   });
