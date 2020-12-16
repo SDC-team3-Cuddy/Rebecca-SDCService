@@ -14,13 +14,13 @@ describe('seeder.js', () => {
     });
 
     it('should generate a single CSV line', () => {
-      const sampleItem = seeder.generateDataLine('item');
+      const sampleItem = seeder.generateDataLine(5, 'item');
       console.log(`      ${sampleItem}`);
       expect(sampleItem).to.be.a('string'); // description
     });
 
-    it('should generate an array of 100 style arrays with a color, image_url, and quantity', () => {
-      const sampleStyle = seeder.generateDataLine('style');
+    it('should generate an style line with an id, color, image_url, and quantity', () => {
+      const sampleStyle = seeder.generateDataLine(6, 'style');
       console.log(`      ${sampleStyle}`);
       expect(sampleStyle).to.be.a('string');
     });
@@ -32,7 +32,7 @@ describe('seeder.js', () => {
     });
 
     it('should return a CSV when passed an array of arrays', () => {
-      const itemCSV = seeder.generateDataLine('item');
+      const itemCSV = seeder.generateDataLine(3, 'item');
       console.log(`        itemCSV: ${itemCSV}`);
       // console.log(papa.parse(itemCSV));
       // eslint-disable-next-line no-unused-expressions

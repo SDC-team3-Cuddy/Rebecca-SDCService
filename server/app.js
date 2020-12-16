@@ -1,11 +1,12 @@
+require('newrelic');
 const express = require('express');
 
 const app = express();
 const bodyParser = require('body-parser');
 const path = require('path');
-const db = require('../db'); // including this file makes use of MySQL
+// const db = require('../db'); // including this file makes use of MySQL
 // const db = require('../mongodb'); // including this file makes use of MongoDB
-// const db = require('../postgresdb'); // including this file makes use of PostgreSQL
+const db = require('../postgresdb/index'); // including this file makes use of PostgreSQL
 
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(bodyParser.urlencoded({ extended: true }));

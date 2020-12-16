@@ -1738,27 +1738,44 @@ var AddToCart = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(AddToCart, [{
-    key: "handleHover",
-    value: function handleHover(e) {
+    key: "componentDidMount",
+    value: function componentDidMount() {
       var _this2 = this;
 
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/styles').then(function (response) {
+        console.log('Response from GET/api/styles: ', response.data.rows);
+
+        _this2.setState({
+          images: response.data.rows
+        });
+      })["catch"](function (err) {
+        console.log('received an error from get request in ATC', err);
+      });
+    }
+  }, {
+    key: "handleHover",
+    value: function handleHover(e) {
+      var _this3 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/styles').then(function (response) {
         var hover = e.target.src.toString();
+        var newstyle;
 
         for (var i = 0; i < response.data.length; i++) {
           if (response.data[i].image_url === hover) {
-            var newstyle = response.data[i].style;
+            newstyle = response.data.rows[i].style;
           }
         }
 
-        _this2.setState({
+        _this3.setState({
           style: newstyle
         });
       })["catch"](function (err) {
         console.log('we have an error from your hover method ', err);
       });
       e.persist();
-    }
+    } // eslint-disable-next-line class-methods-use-this
+
   }, {
     key: "handleFirst",
     value: function handleFirst(str) {
@@ -1767,25 +1784,26 @@ var AddToCart = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleClick",
     value: function handleClick(e) {
-      var _this3 = this;
+      var _this4 = this;
 
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/styles').then(function (response) {
         var clicked = e.target.src.toString();
+        var newquantity;
 
         for (var i = 0; i < response.data.length; i++) {
           if (response.data[i].image_url === clicked) {
-            var newquantity = response.data[i].quantity;
+            newquantity = response.data.rows[i].quantity;
           }
         }
 
         if (newquantity === 0) {
-          _this3.setState({
+          _this4.setState({
             status: 'Reserve Now',
             message: 'Order now!',
             inventory: 'This item is backordered but is available to reserve now. You will not be charged until the item ships. Email me when this is in stock.'
           });
         } else {
-          _this3.setState({
+          _this4.setState({
             status: 'Add to Cart',
             message: 'In Stock',
             inventory: 'Most orders placed before noon ET ship same day (except weekends and holidays).'
@@ -1795,21 +1813,6 @@ var AddToCart = /*#__PURE__*/function (_React$Component) {
         console.log('could not retrieve style');
       });
       e.persist();
-    }
-  }, {
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var _this4 = this;
-
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/styles').then(function (response) {
-        console.log('response is ', response.data);
-
-        _this4.setState({
-          images: response.data
-        });
-      })["catch"](function (err) {
-        console.log('received an error from get request in ATC', err);
-      });
     }
   }, {
     key: "render",
@@ -1865,7 +1868,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _node_modules_css_loader_dist_cjs_js_AddToList_module_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js!./AddToList.module.css */ "./node_modules/css-loader/dist/cjs.js!./client/css/AddToList.module.css");
 
-
+            
 
 var options = {};
 
@@ -1893,7 +1896,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _node_modules_css_loader_dist_cjs_js_Button_module_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js!./Button.module.css */ "./node_modules/css-loader/dist/cjs.js!./client/css/Button.module.css");
 
-
+            
 
 var options = {};
 
@@ -1921,7 +1924,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _node_modules_css_loader_dist_cjs_js_Description_module_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js!./Description.module.css */ "./node_modules/css-loader/dist/cjs.js!./client/css/Description.module.css");
 
-
+            
 
 var options = {};
 
@@ -1949,7 +1952,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _node_modules_css_loader_dist_cjs_js_Extra_module_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js!./Extra.module.css */ "./node_modules/css-loader/dist/cjs.js!./client/css/Extra.module.css");
 
-
+            
 
 var options = {};
 
@@ -1977,7 +1980,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _node_modules_css_loader_dist_cjs_js_Financing_module_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js!./Financing.module.css */ "./node_modules/css-loader/dist/cjs.js!./client/css/Financing.module.css");
 
-
+            
 
 var options = {};
 
@@ -2005,7 +2008,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _node_modules_css_loader_dist_cjs_js_Images_module_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js!./Images.module.css */ "./node_modules/css-loader/dist/cjs.js!./client/css/Images.module.css");
 
-
+            
 
 var options = {};
 
@@ -2033,7 +2036,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _node_modules_css_loader_dist_cjs_js_InternationalPopup_module_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js!./InternationalPopup.module.css */ "./node_modules/css-loader/dist/cjs.js!./client/css/InternationalPopup.module.css");
 
-
+            
 
 var options = {};
 
@@ -2061,7 +2064,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _node_modules_css_loader_dist_cjs_js_Inventory_module_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js!./Inventory.module.css */ "./node_modules/css-loader/dist/cjs.js!./client/css/Inventory.module.css");
 
-
+            
 
 var options = {};
 
@@ -2089,7 +2092,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _node_modules_css_loader_dist_cjs_js_LessonPlans_module_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js!./LessonPlans.module.css */ "./node_modules/css-loader/dist/cjs.js!./client/css/LessonPlans.module.css");
 
-
+            
 
 var options = {};
 
@@ -2117,7 +2120,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _node_modules_css_loader_dist_cjs_js_Lessonpopup_module_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js!./Lessonpopup.module.css */ "./node_modules/css-loader/dist/cjs.js!./client/css/Lessonpopup.module.css");
 
-
+            
 
 var options = {};
 
@@ -2145,7 +2148,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _node_modules_css_loader_dist_cjs_js_Lessons_module_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js!./Lessons.module.css */ "./node_modules/css-loader/dist/cjs.js!./client/css/Lessons.module.css");
 
-
+            
 
 var options = {};
 
@@ -2173,7 +2176,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _node_modules_css_loader_dist_cjs_js_Message_module_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js!./Message.module.css */ "./node_modules/css-loader/dist/cjs.js!./client/css/Message.module.css");
 
-
+            
 
 var options = {};
 
@@ -2201,7 +2204,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _node_modules_css_loader_dist_cjs_js_Popup_module_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js!./Popup.module.css */ "./node_modules/css-loader/dist/cjs.js!./client/css/Popup.module.css");
 
-
+            
 
 var options = {};
 
@@ -2229,7 +2232,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _node_modules_css_loader_dist_cjs_js_Price_module_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js!./Price.module.css */ "./node_modules/css-loader/dist/cjs.js!./client/css/Price.module.css");
 
-
+            
 
 var options = {};
 
@@ -2257,7 +2260,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _node_modules_css_loader_dist_cjs_js_Promos_module_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js!./Promos.module.css */ "./node_modules/css-loader/dist/cjs.js!./client/css/Promos.module.css");
 
-
+            
 
 var options = {};
 
@@ -2285,7 +2288,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _node_modules_css_loader_dist_cjs_js_ProtectPopup_module_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js!./ProtectPopup.module.css */ "./node_modules/css-loader/dist/cjs.js!./client/css/ProtectPopup.module.css");
 
-
+            
 
 var options = {};
 
@@ -2313,7 +2316,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _node_modules_css_loader_dist_cjs_js_Questions_module_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js!./Questions.module.css */ "./node_modules/css-loader/dist/cjs.js!./client/css/Questions.module.css");
 
-
+            
 
 var options = {};
 
@@ -2341,7 +2344,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _node_modules_css_loader_dist_cjs_js_Style_module_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js!./Style.module.css */ "./node_modules/css-loader/dist/cjs.js!./client/css/Style.module.css");
 
-
+            
 
 var options = {};
 
@@ -2369,7 +2372,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _node_modules_css_loader_dist_cjs_js_addToCart_module_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js!./addToCart.module.css */ "./node_modules/css-loader/dist/cjs.js!./client/css/addToCart.module.css");
 
-
+            
 
 var options = {};
 
@@ -2397,7 +2400,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _node_modules_css_loader_dist_cjs_js_index_module_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js!./index.module.css */ "./node_modules/css-loader/dist/cjs.js!./client/css/index.module.css");
 
-
+            
 
 var options = {};
 
@@ -2489,11 +2492,15 @@ var App = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
 
       axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('/api/values').then(function (response) {
+        console.log('Response to GET/api/values: ', response.data.rows);
+
         _this2.setState({
-          results: response.data,
-          description: response.data[0].description,
-          price: response.data[0].price
+          results: response.data.rows,
+          description: response.data.rows[0].description,
+          price: response.data.rows[0].price
         });
+      })["catch"](function (error) {
+        console.error('Error in index.jsx GET/api/values: ', error);
       });
     }
   }, {

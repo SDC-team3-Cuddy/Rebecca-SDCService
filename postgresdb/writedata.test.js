@@ -9,7 +9,7 @@ const { Pool } = require('./pool');
 const { Password } = require('../rootConfig');
 
 const { expect } = chai;
-const size = 5000000;
+const size = 10;
 
 // Establishing postgreSQL connection pool
 const connection = new Pool();
@@ -35,7 +35,7 @@ describe('writedata.js', () => {
       expect(write.copyToDB).to.be.a('function');
     });
 
-    it('should copy 2 massive (5,000,000 entry) written CSV files to the database', () => {
+    it('should copy 2 small (10 entry) written CSV files to the database', () => {
       // Write the Items CSV
       const testFileItems = '/Users/becca/Documents/HackReactor/GitHub Repositories/SDC/Rebecca-SDCService/csv/test_csv_files/testItemCSV.csv';
       seeder.writeCSV(size, testFileItems, 'item', () => {

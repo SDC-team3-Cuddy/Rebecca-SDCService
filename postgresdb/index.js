@@ -4,6 +4,7 @@
 const { Pool } = require('./pool');
 const { Password } = require('../rootConfig.js');
 
+/*
 const productsConfig = {
   host: 'localhost',
   port: 5432,
@@ -11,9 +12,21 @@ const productsConfig = {
   user: 'becca',
   password: Password,
 };
+*/
+
+const productsDeployedEC2 = {
+  host: '18.188.192.160',
+  port: 5432,
+  database: 'products',
+  user: 'abessia',
+  password: Password,
+};
+
+let itemsID = 10000002;
+let stylesID = 10000002;
 
 const connect = new Pool();
-connect.connect(productsConfig)
+connect.connect(productsDeployedEC2)
   .then(() => {
     console.log('connected to postgres database "products"');
   })
@@ -23,9 +36,9 @@ connect.connect(productsConfig)
 const connection = connect._pool;
 
 /* API-CALL DATABASE QUERIES */
-// Read-All (GET)
+// Read-Top-100 (GET)
 const getValues = (callback) => {
-  const sql = 'SELECT * FROM items';
+  const sql = 'SELECT * FROM items WHERE id<101';
   connection.query(sql, (err, response) => {
     console.log('querying database...');
     if (err) {
@@ -37,7 +50,7 @@ const getValues = (callback) => {
 };
 
 const getStyles = (callback) => {
-  const sql = 'SELECT * FROM styles';
+  const sql = 'SELECT * FROM styles WHERE id<101';
   connection.query(sql, (err, response) => {
     if (err) {
       callback(err, null);
@@ -72,7 +85,8 @@ const readStyle = (callId, callback) => {
 
 // Create (POST) -- takes an object, translates it to SQL syntax, Inserts into db
 const addItem = (itemObj, callback) => {
-  const sql = `INSERT INTO items (description, price) VALUES (${itemObj.description}, ${itemObj.price})`;
+  const sql = `INSERT INTO items (id, description, price) VALUES (${itemsID}, ${itemObj.description}, ${itemObj.price})`;
+  itemsID += 1;
   connection.query(sql, (err, response) => {
     if (err) {
       callback(err, null);
@@ -83,7 +97,8 @@ const addItem = (itemObj, callback) => {
 };
 
 const addStyle = (styleObj, callback) => {
-  const sql = `INSERT INTO styles (style, image_url, quantity) VALUES (${styleObj.style}, ${styleObj.image_url}, ${styleObj.quantity})`;
+  const sql = `INSERT INTO styles (id, style, image_url, quantity) VALUES (${stylesID}, ${styleObj.style}, ${styleObj.image_url}, ${styleObj.quantity})`;
+  stylesID += 1;
   connection.query(sql, (err, response) => {
     if (err) {
       callback(err, null);

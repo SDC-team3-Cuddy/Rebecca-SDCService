@@ -6,16 +6,30 @@ const write = require('./writedata');
 const seeder = require('../seeder/seeder');
 const { Pool } = require('./pool');
 const { Password } = require('../rootConfig');
+const path = require('path');
 
-const size = 5000000;
+const size = 10000000;
 
 // Establishing postgreSQL connection pool
 const connection = new Pool();
+
+/*
+// localhost database
 const dbConfig = {
   host: 'localhost',
   port: 5432,
   database: 'products',
   user: 'becca',
+  password: Password,
+};
+*/
+
+// deployed database
+const dbConfig = {
+  host: '18.188.192.160',
+  port: 5432,
+  database: 'products',
+  user: 'abessia',
   password: Password,
 };
 
@@ -30,12 +44,19 @@ connection.connect(dbConfig)
 
 // copyToDB method (uses callback logic for async)
 // Write the Items CSV
-const fileItems = '/Users/becca/Documents/HackReactor/GitHub Repositories/SDC/Rebecca-SDCService/csv/itemsCSV.csv';
+const fileItems =  path.resolve(__dirname, '../csv/itesmCSV.csv'); // '/Users/becca/Documents/HackReactor/GitHub-Repositories/SDC/Rebecca-SDCService/csv/itemsCSV.csv';
+const fileStyles = path.resolve(__dirname, '../csv/stylesCSV.csv'); // '/Users/becca/Documents/HackReactor/GitHub-Repositories/SDC/Rebecca-SDCService/csv/stylesCSV.csv';
+
+//run the following if the CSVs already exist
+write.copyToDB(connection._pool, fileItems, fileStyles, () => {
+  console.log('Database Seeded');
+});
+
+/*
 console.log('Writing Item CSV');
 seeder.writeCSV(size, fileItems, 'item', () => {
   // Write the Styles CSV
   console.log('Writing Style CSV');
-  const fileStyles = '/Users/becca/Documents/HackReactor/GitHub Repositories/SDC/Rebecca-SDCService/csv/stylesCSV.csv';
   seeder.writeCSV(size, fileStyles, 'style', () => {
     // Copy the finished CSV files into the database
     console.log('Copying CSV Files to Database');
@@ -44,3 +65,5 @@ seeder.writeCSV(size, fileItems, 'item', () => {
     });
   });
 });
+*/
+

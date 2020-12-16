@@ -16,31 +16,33 @@ const removeCommas = (string) => {
   return stringArr.join('');
 };
 
-const makeItem = () => {
+const makeItem = (id) => {
   const item = [];
   const description = removeCommas(faker.commerce.productDescription());
+  item.push(id);
   item.push(description);
   item.push(faker.random.float());
   return item;
 };
 
-const makeStyle = (num) => {
+const makeStyle = (num, id) => {
   const style = [];
+  style.push(id);
   style.push(faker.commerce.color());
-  style.push(faker.random.number(1, 10));
-  style.push(`https://guitarimages.s3-us-west-2.amazonaws.com/Guitar_Image${num}.jpg`);
+  style.push(Math.floor(Math.random() * 12));
+  style.push(`https://guitar-centaur.s3.us-east-2.amazonaws.com/guitar${num}.jpeg`);
   return style;
 };
 
-const generateDataLine = (type) => {
+const generateDataLine = (id, type) => {
   let CSVLine;
   if (type === 'item') {
     const item = [];
-    item.push(makeItem());
+    item.push(makeItem(id));
     CSVLine = makeCSV(item);
   } else if (type === 'style') {
     const style = [];
-    style.push(makeStyle((Math.random() * 99) + 1));
+    style.push(makeStyle((Math.floor((Math.random() * 109)) + 1), id));
     CSVLine = makeCSV(style);
   }
   return CSVLine;
@@ -54,13 +56,13 @@ const writeCSV = (size, Filename, type, callback = () => {}) => {
     do {
       i--;
       if (i === 0) {
-        const CSV = generateDataLine(type);
+        const CSV = generateDataLine(i, type);
         File.write(CSV, 'utf8', () => {
           File.end();
           callback(CSV);
         });
       } else {
-        let CSV = generateDataLine(type);
+        let CSV = generateDataLine(i, type);
         CSV += '\n';
         canWrite = File.write(CSV, 'utf8');
       }

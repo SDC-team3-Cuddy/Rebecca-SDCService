@@ -32,13 +32,27 @@ class AddToCart extends React.Component {
     this.handleHover = this.handleHover.bind(this);
   }
 
+  componentDidMount() {
+    axios.get('/api/styles')
+      .then((response) => {
+        console.log('Response from GET/api/styles: ', response.data.rows);
+        this.setState({
+          images: response.data.rows,
+        });
+      })
+      .catch((err) => {
+        console.log('received an error from get request in ATC', err);
+      });
+  }
+
   handleHover(e) {
     axios.get('/api/styles')
       .then((response) => {
         const hover = e.target.src.toString();
+        let newstyle;
         for (let i = 0; i < response.data.length; i++) {
           if (response.data[i].image_url === hover) {
-            var newstyle = response.data[i].style;
+            newstyle = response.data.rows[i].style;
           }
         }
         this.setState({
@@ -51,6 +65,7 @@ class AddToCart extends React.Component {
     e.persist();
   }
 
+  // eslint-disable-next-line class-methods-use-this
   handleFirst(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
   }
@@ -59,9 +74,10 @@ class AddToCart extends React.Component {
     axios.get('/api/styles')
       .then((response) => {
         const clicked = e.target.src.toString();
+        let newquantity;
         for (let i = 0; i < response.data.length; i++) {
           if (response.data[i].image_url === clicked) {
-            var newquantity = response.data[i].quantity;
+            newquantity = response.data.rows[i].quantity;
           }
         }
         if (newquantity === 0) {
@@ -82,19 +98,6 @@ class AddToCart extends React.Component {
         console.log('could not retrieve style');
       });
     e.persist();
-  }
-
-  componentDidMount() {
-    axios.get('/api/styles')
-      .then((response) => {
-        console.log('response is ', response.data);
-        this.setState({
-          images: response.data,
-        });
-      })
-      .catch((err) => {
-        console.log('received an error from get request in ATC', err);
-      });
   }
 
   render() {

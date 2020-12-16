@@ -10,8 +10,14 @@ rootConfig.js
 npm
 npm-debug.log
 node_modules/
-
+db/
+mongodb/
+newrelic.js
 csv/
+nrdiag_x64
+nrdiag/
+nrdiag-*
+guitarcentaur.yml
 
 pids
 *.pid
