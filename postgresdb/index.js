@@ -1,14 +1,44 @@
-/* eslint-disable max-len */
-/* eslint-disable spaced-comment */
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable no-console */
-/*const mysql = require('mysql');
-const config = require('./config.js');
+/* INITIALIZATION */
+const { Pool } = require('./pool');
+const { Password } = require('../rootConfig.js');
 
-const connection = mysql.createConnection(config);
+/*
+const productsConfig = {
+  host: 'localhost',
+  port: 5432,
+  database: 'products',
+  user: 'becca',
+  password: Password,
+};
+*/
 
-// Read-All
+const productsDeployedEC2 = {
+  host: '18.188.192.160',
+  port: 5432,
+  database: 'products',
+  user: 'abessia',
+  password: Password,
+};
+
+let itemsID = 10000002;
+let stylesID = 10000002;
+
+const connect = new Pool();
+connect.connect(productsDeployedEC2)
+  .then(() => {
+    console.log('connected to postgres database "products"');
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+const connection = connect._pool;
+
+/* API-CALL DATABASE QUERIES */
+// Read-Top-100 (GET)
 const getValues = (callback) => {
-  const sql = 'SELECT * FROM Items';
+  const sql = 'SELECT * FROM items WHERE id<101';
   connection.query(sql, (err, response) => {
     console.log('querying database...');
     if (err) {
@@ -20,7 +50,7 @@ const getValues = (callback) => {
 };
 
 const getStyles = (callback) => {
-  const sql = 'SELECT * FROM Styles';
+  const sql = 'SELECT * FROM styles WHERE id<101';
   connection.query(sql, (err, response) => {
     if (err) {
       callback(err, null);
@@ -30,9 +60,9 @@ const getStyles = (callback) => {
   });
 };
 
-// Read-One -- takes a num representing the id number of a row in the table
+// Read-One (GET) -- takes a num representing the id number of a row in the table
 const readItem = (callId, callback) => {
-  const sql = `SELECT * FROM Items WHERE id=${callId}`;
+  const sql = `SELECT * FROM items WHERE id=${callId}`;
   connection.query(sql, (err, response) => {
     if (err) {
       callback(err, null);
@@ -43,7 +73,7 @@ const readItem = (callId, callback) => {
 };
 
 const readStyle = (callId, callback) => {
-  const sql = `SELECT * FROM Styles WHERE id=${callId}`;
+  const sql = `SELECT * FROM styles WHERE id=${callId}`;
   connection.query(sql, (err, response) => {
     if (err) {
       callback(err, null);
@@ -53,9 +83,10 @@ const readStyle = (callId, callback) => {
   });
 };
 
-// Create -- takes an object, translates it to SQL syntax, Inserts into db
+// Create (POST) -- takes an object, translates it to SQL syntax, Inserts into db
 const addItem = (itemObj, callback) => {
-  const sql = `INSERT INTO Items (description, price) VALUES (${itemObj.description}, ${itemObj.price})`;
+  const sql = `INSERT INTO items (id, description, price) VALUES (${itemsID}, ${itemObj.description}, ${itemObj.price})`;
+  itemsID += 1;
   connection.query(sql, (err, response) => {
     if (err) {
       callback(err, null);
@@ -66,7 +97,8 @@ const addItem = (itemObj, callback) => {
 };
 
 const addStyle = (styleObj, callback) => {
-  const sql = `INSERT INTO Styles (style, image_url, quantity) VALUES (${styleObj.style}, ${styleObj.image_url}, ${styleObj.quantity})`;
+  const sql = `INSERT INTO styles (id, style, image_url, quantity) VALUES (${stylesID}, ${styleObj.style}, ${styleObj.image_url}, ${styleObj.quantity})`;
+  stylesID += 1;
   connection.query(sql, (err, response) => {
     if (err) {
       callback(err, null);
@@ -76,7 +108,7 @@ const addStyle = (styleObj, callback) => {
   });
 };
 
-// Update -- takes an object, checks its key names, updates those columns @ id
+// Update (PUT) -- takes an object, checks its key names, updates those columns @ id
 const updateItem = (itemObj, callback) => {
   let sql;
 
@@ -85,11 +117,11 @@ const updateItem = (itemObj, callback) => {
   }
 
   if (itemObj.description !== undefined && itemObj.price !== undefined) {
-    sql = `UPDATE Items SET description='${itemObj.description}', price=${itemObj.price} WHERE id=${itemObj.id}`;
+    sql = `UPDATE items SET description='${itemObj.description}', price=${itemObj.price} WHERE id=${itemObj.id}`;
   } else if (itemObj.description !== undefined) {
-    sql = `UPDATE Items SET description='${itemObj.description}' WHERE id=${itemObj.id}`;
+    sql = `UPDATE items SET description='${itemObj.description}' WHERE id=${itemObj.id}`;
   } else if (itemObj.price !== undefined) {
-    sql = `UPDATE Items SET price=${itemObj.price} WHERE id=${itemObj.id}`;
+    sql = `UPDATE items SET price=${itemObj.price} WHERE id=${itemObj.id}`;
   }
 
   connection.query(sql, (err, response) => {
@@ -111,25 +143,25 @@ const updateStyle = (styleObj, callback) => {
   // check if all 3 cols need to be updated
   if (styleObj.style !== undefined && styleObj.image_url !== undefined
     && styleObj.quantity !== undefined) {
-    sql = `UPDATE Styles SET style='${styleObj.style}', image_url='${styleObj.image_url}', quantity=${styleObj.quantity} WHERE id=${styleObj.id}`;
+    sql = `UPDATE styles SET style='${styleObj.style}', image_url='${styleObj.image_url}', quantity=${styleObj.quantity} WHERE id=${styleObj.id}`;
   } else if (styleObj.style !== undefined) {
     // if not all 3, but the style needs updating, check if a second col needs updating
     if (styleObj.image_url !== undefined) {
-      sql = `UPDATE Styles SET style='${styleObj.style}', image_url='${styleObj.image_url}' WHERE id=${styleObj.id}`;
+      sql = `UPDATE styles SET style='${styleObj.style}', image_url='${styleObj.image_url}' WHERE id=${styleObj.id}`;
     } else if (styleObj.quantity !== undefined) {
-      sql = `UPDATE Styles SET style='${styleObj.style}', quantity=${styleObj.quantity} WHERE id=${styleObj.id}`;
+      sql = `UPDATE styles SET style='${styleObj.style}', quantity=${styleObj.quantity} WHERE id=${styleObj.id}`;
     } else {
-      sql = `UPDATE Styles SET style='${styleObj.style}' WHERE id=${styleObj.id}`;
+      sql = `UPDATE styles SET style='${styleObj.style}' WHERE id=${styleObj.id}`;
     }
   } else if (styleObj.image_url !== undefined) {
     // if style does not need updating, check if one or both of the other cols need it
     if (styleObj.quantity !== undefined) {
-      sql = `UPDATE Styles SET image_url='${styleObj.image_url}', quantity=${styleObj.quantity} WHERE id=${styleObj.id}`;
+      sql = `UPDATE styles SET image_url='${styleObj.image_url}', quantity=${styleObj.quantity} WHERE id=${styleObj.id}`;
     } else {
-      sql = `UPDATE Styles SET image_url='${styleObj.image_url}' WHERE id=${styleObj.id}`;
+      sql = `UPDATE styles SET image_url='${styleObj.image_url}' WHERE id=${styleObj.id}`;
     }
   } else if (styleObj.quantity !== undefined) {
-    sql = `UPDATE Styles SET quantity=${styleObj.quantity} WHERE id=${styleObj.id}`;
+    sql = `UPDATE styles SET quantity=${styleObj.quantity} WHERE id=${styleObj.id}`;
   }
 
   connection.query(sql, (err, response) => {
@@ -141,9 +173,9 @@ const updateStyle = (styleObj, callback) => {
   });
 };
 
-// Delete
+// Delete (DELETE)
 const deleteItem = (callId, callback) => {
-  const sql = `DELETE FROM Items WHERE id=${callId}`;
+  const sql = `DELETE FROM items WHERE id=${callId}`;
   connection.query(sql, (err, response) => {
     if (err) {
       callback(err, null);
@@ -154,7 +186,7 @@ const deleteItem = (callId, callback) => {
 };
 
 const deleteStyle = (callId, callback) => {
-  const sql = `DELETE FROM Styles WHERE id=${callId}`;
+  const sql = `DELETE FROM styles WHERE id=${callId}`;
   connection.query(sql, (err, response) => {
     if (err) {
       callback(err, null);
@@ -176,4 +208,3 @@ module.exports = {
   deleteItem,
   deleteStyle,
 };
-*/

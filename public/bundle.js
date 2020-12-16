@@ -281,7 +281,7 @@ var Description = /*#__PURE__*/function (_React$Component) {
         className: _css_Description_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].productdescription
       }, " Product Description: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: _css_Description_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].description
-      }, " ", this.props.description));
+      }, ' ', this.props.description));
     }
   }]);
 
@@ -418,12 +418,12 @@ var Financing = /*#__PURE__*/function (_React$Component) {
         className: _css_Financing_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].financing
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: _css_Financing_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].giftcard,
-        src: 'https://www.photowork.net/wp-content/uploads/2017/01/Giftcard.jpg'
-      }), "Special 6-month financing: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        src: "https://www.photowork.net/wp-content/uploads/2017/01/Giftcard.jpg"
+      }), "Special 6-month financing:", ' ', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, ' ', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: ""
-      }, " $8 back in rewards. ")), "Valid through 12/31/2020. ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      }, " $8 back in rewards. ")), "Valid through 12/31/2020.", ' ', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: ""
-      }, " Get Details "), " "), " About Special Financing Offers"));
+      }, " Get Details "), ' '), ' ', "About Special Financing Offers"));
     }
   }]);
 
@@ -446,9 +446,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _css_Images_module_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../css/Images.module.css */ "./client/css/Images.module.css");
-/* harmony import */ var _Images_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Images.jsx */ "./client/components/Images.jsx");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -470,8 +467,6 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-
 
 
 
@@ -620,6 +615,7 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+/* eslint-disable no-console */
 
 
 
@@ -647,11 +643,11 @@ var InternationalPopup = /*#__PURE__*/function (_React$Component) {
         className: _css_InternationalPopup_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].popupinner
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: _css_InternationalPopup_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].popdiv
-      }, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      }, ' ', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         onClick: this.props.closePopup,
         className: _css_InternationalPopup_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].close,
         src: "https://image.flaticon.com/icons/png/512/2938/2938566.png"
-      }), " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+      }), ' '), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
         className: _css_InternationalPopup_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].popheader
       }, "International Shipping"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("aside", {
         className: _css_InternationalPopup_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].aside
@@ -724,7 +720,7 @@ var Inventory = /*#__PURE__*/function (_React$Component) {
         className: _css_Inventory_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].inventorywrapper
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: _css_Inventory_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].inventory
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, " ", this.props.inventory, " ")));
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, ' ', this.props.inventory, ' ')));
     }
   }]);
 
@@ -797,7 +793,7 @@ var LessonPlans = /*#__PURE__*/function (_React$Component) {
   _createClass(LessonPlans, [{
     key: "handleThirty",
     value: function handleThirty() {
-      if (this.props.plan === "In-Store") {
+      if (this.props.plan === 'In-Store') {
         this.setState({
           lessonPop: false,
           thirtyPop: !this.state.thirtyPop
@@ -807,7 +803,7 @@ var LessonPlans = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handlePop",
     value: function handlePop() {
-      if (this.props.plan === "In-Store") {
+      if (this.props.plan === 'In-Store') {
         this.setState({
           lessonPop: !this.state.lessonPop,
           thirtyPop: false
@@ -826,7 +822,7 @@ var LessonPlans = /*#__PURE__*/function (_React$Component) {
         className: _css_LessonPlans_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].lessonsplanbutton
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " Add four 60 minute lessons "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: _css_LessonPlans_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].lesson
-      }, " ", this.props.sixty)), this.state.lessonPop ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LessonPopup_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }, ' ', this.props.sixty)), this.state.lessonPop ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LessonPopup_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
         sixtyProp: this.props.sixty,
         closePopup: this.handlePop.bind(this)
       }) : null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -836,7 +832,7 @@ var LessonPlans = /*#__PURE__*/function (_React$Component) {
         className: _css_LessonPlans_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].lessonsplanbutton
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " Add four 30 minute lessons "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: _css_LessonPlans_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].lesson
-      }, " ", this.props.thirty, " ")), this.state.thirtyPop ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LessonPopup_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }, ' ', this.props.thirty, ' ')), this.state.thirtyPop ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LessonPopup_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
         closePopup: this.handleThirty.bind(this)
       }) : null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: _css_LessonPlans_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].nothanks
@@ -908,11 +904,11 @@ var LessonPopup = /*#__PURE__*/function (_React$Component) {
         className: _css_Lessonpopup_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].popup
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: _css_Lessonpopup_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].popupinner
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, ' ', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         onClick: this.props.closePopup,
         className: _css_Lessonpopup_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].close,
         src: "https://image.flaticon.com/icons/png/512/2938/2938566.png"
-      }), " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("aside", {
+      }), ' '), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("aside", {
         className: _css_Lessonpopup_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].aside
       }, "In\u2010store lessons are currently unavailable, except in a few select locations. As we reopen in\u2010store lessons, we have worked diligently with our parents and students to co\u2010create safety standards and protocols together. Our goal is to ensure our students and instructors stay safe as we continue to provide great musical learning experiences."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: _css_Lessonpopup_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].popbutton,
@@ -995,7 +991,7 @@ var Lessons = /*#__PURE__*/function (_React$Component) {
   _createClass(Lessons, [{
     key: "handleLesson",
     value: function handleLesson(e) {
-      if (e.target.value === "Online Lesson") {
+      if (e.target.value === 'Online Lesson') {
         this.setState({
           selectedValue: e.target.value,
           sixtyMinutes: '+ $198.99',
@@ -1029,14 +1025,14 @@ var Lessons = /*#__PURE__*/function (_React$Component) {
         onChange: this.handleLesson,
         type: "radio",
         value: "Online Lesson",
-        checked: this.state.selectedValue === "Online Lesson"
+        checked: this.state.selectedValue === 'Online Lesson'
       }), "Online Lessons"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: _css_Lessons_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].listitem
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "radio",
         value: "In-Store",
         onChange: this.handleLesson,
-        checked: this.state.selectedValue === "In-Store"
+        checked: this.state.selectedValue === 'In-Store'
       })), "In-Store Lessons")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LessonPlans_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
         plan: this.state.plan,
         thirty: this.state.thirtyMinutes,
@@ -1152,6 +1148,7 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+/* eslint-disable no-console */
 
 
 
@@ -1177,11 +1174,11 @@ var Popup = /*#__PURE__*/function (_React$Component) {
         className: _css_Popup_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].popup
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: _css_Popup_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].popupinner
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, ' ', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         onClick: this.props.closePopup,
         className: _css_Popup_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].close,
         src: "https://image.flaticon.com/icons/png/512/2938/2938566.png"
-      }), " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+      }), ' '), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
         className: _css_Popup_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].popheader
       }, "Free Shipping"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("aside", {
         className: _css_Popup_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].aside
@@ -1254,7 +1251,7 @@ var Price = /*#__PURE__*/function (_React$Component) {
         className: _css_Price_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].pricewrapper
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: _css_Price_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].productprice
-      }, " $", this.props.price, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, ' ', "$", this.props.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: _css_Price_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].freeshipping
       }, " +Free Shipping "));
     }
@@ -1368,52 +1365,52 @@ var Promos = /*#__PURE__*/function (_React$Component) {
         className: _css_Promos_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].headphoneswrapper
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: _css_Promos_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].anchor
-      }, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      }, ' ', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: _css_Promos_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].headphones,
-        src: 'https://img.flaticon.com/icons/png/512/27/27130.png?size=1200x630f&pad=10,10,10,10&ext=png&bg=FFFFFFFF'
-      }), " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        src: "https://img.flaticon.com/icons/png/512/27/27130.png?size=1200x630f&pad=10,10,10,10&ext=png&bg=FFFFFFFF"
+      }), ' '), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: _css_Promos_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].actual,
         onClick: this.handleProtect
-      }, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      }, ' ', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: _css_Promos_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].protect,
         value: "Protect"
-      }, " Protect Your Gear "), " "), this.state.showProtect ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ProtectPopup_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      }, " Protect Your Gear "), ' '), this.state.showProtect ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ProtectPopup_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], {
         closePopup: this.handleProtect.bind(this)
       }) : null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: _css_Promos_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].sometext
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: _css_Promos_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].anchor,
         value: "Free shipping"
-      }, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      }, ' ', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: _css_Promos_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].shipping,
-        src: 'https://image.flaticon.com/icons/png/512/44/44266.png'
-      }), " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        src: "https://image.flaticon.com/icons/png/512/44/44266.png"
+      }), ' '), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: _css_Promos_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].actual,
         onClick: this.handleShip,
         target: "Free Shipping"
-      }, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      }, ' ', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: _css_Promos_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].free,
         value: "Free Shipping"
-      }, " Free Shipping "), " "), this.state.showShipping ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Popup_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }, " Free Shipping "), ' '), this.state.showShipping ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Popup_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
         closePopup: this.handleShip.bind(this)
       }) : null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: _css_Promos_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].international
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: _css_Promos_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].anchor
-      }, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      }, ' ', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: _css_Promos_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].internationalicon,
-        src: 'https://image.flaticon.com/icons/png/128/558/558593.png'
-      }), " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        src: "https://image.flaticon.com/icons/png/128/558/558593.png"
+      }), ' '), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: _css_Promos_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].actual,
         onClick: this.handleInternational
-      }, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      }, ' ', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: _css_Promos_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].intshipping,
         value: "International"
-      }, " International Shipping "), " "), this.state.showInt ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_International_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      }, " International Shipping "), ' '), this.state.showInt ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_International_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
         closePopup: this.handleInternational.bind(this)
       }) : null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: _css_Promos_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].rogue,
-        src: 'https://static.guitarcenter.com/derivates/20/002/1/DV030_Jpg_BrandLogo_1000_rogue.jpg'
+        src: "https://static.guitarcenter.com/derivates/20/002/1/DV030_Jpg_BrandLogo_1000_rogue.jpg"
       })));
     }
   }]);
@@ -1459,6 +1456,7 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+/* eslint-disable no-console */
 
 
 
@@ -1484,11 +1482,11 @@ var ProtectPopup = /*#__PURE__*/function (_React$Component) {
         className: _css_ProtectPopup_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].popup
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: _css_ProtectPopup_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].popupinner
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, ' ', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         onClick: this.props.closePopup,
         className: _css_ProtectPopup_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].close,
         src: "https://image.flaticon.com/icons/png/512/2938/2938566.png"
-      }), " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+      }), ' '), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
         className: _css_ProtectPopup_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].popheader
       }, " This Qualifies for Pro Coverage   "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("aside", {
         className: _css_ProtectPopup_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].aside
@@ -1565,10 +1563,10 @@ var Questions = /*#__PURE__*/function (_React$Component) {
         className: _css_Questions_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].qwrapper
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: _css_Questions_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].questions
-      }, " Have Questions? ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      }, ' ', "Have Questions?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: _css_Questions_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].phone,
-        src: 'https://www.clker.com//cliparts/R/i/G/W/R/P/black-phone-hi.png'
-      }), " 866-498-7882"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        src: "https://www.clker.com//cliparts/R/i/G/W/R/P/black-phone-hi.png"
+      }), ' ', "866-498-7882"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: _css_Questions_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].experts
       }, "Call our experts for product info and phone-only specials."));
     }
@@ -1697,6 +1695,7 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+/* eslint-disable no-console */
 
 
 
@@ -1739,27 +1738,44 @@ var AddToCart = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(AddToCart, [{
-    key: "handleHover",
-    value: function handleHover(e) {
+    key: "componentDidMount",
+    value: function componentDidMount() {
       var _this2 = this;
 
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/styles').then(function (response) {
+        console.log('Response from GET/api/styles: ', response.data.rows);
+
+        _this2.setState({
+          images: response.data.rows
+        });
+      })["catch"](function (err) {
+        console.log('received an error from get request in ATC', err);
+      });
+    }
+  }, {
+    key: "handleHover",
+    value: function handleHover(e) {
+      var _this3 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/styles').then(function (response) {
         var hover = e.target.src.toString();
+        var newstyle;
 
         for (var i = 0; i < response.data.length; i++) {
           if (response.data[i].image_url === hover) {
-            var newstyle = response.data[i].style;
+            newstyle = response.data.rows[i].style;
           }
         }
 
-        _this2.setState({
+        _this3.setState({
           style: newstyle
         });
       })["catch"](function (err) {
         console.log('we have an error from your hover method ', err);
       });
       e.persist();
-    }
+    } // eslint-disable-next-line class-methods-use-this
+
   }, {
     key: "handleFirst",
     value: function handleFirst(str) {
@@ -1768,25 +1784,26 @@ var AddToCart = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleClick",
     value: function handleClick(e) {
-      var _this3 = this;
+      var _this4 = this;
 
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/styles').then(function (response) {
         var clicked = e.target.src.toString();
+        var newquantity;
 
         for (var i = 0; i < response.data.length; i++) {
           if (response.data[i].image_url === clicked) {
-            var newquantity = response.data[i].quantity;
+            newquantity = response.data.rows[i].quantity;
           }
         }
 
         if (newquantity === 0) {
-          _this3.setState({
+          _this4.setState({
             status: 'Reserve Now',
             message: 'Order now!',
             inventory: 'This item is backordered but is available to reserve now. You will not be charged until the item ships. Email me when this is in stock.'
           });
         } else {
-          _this3.setState({
+          _this4.setState({
             status: 'Add to Cart',
             message: 'In Stock',
             inventory: 'Most orders placed before noon ET ship same day (except weekends and holidays).'
@@ -1796,21 +1813,6 @@ var AddToCart = /*#__PURE__*/function (_React$Component) {
         console.log('could not retrieve style');
       });
       e.persist();
-    }
-  }, {
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var _this4 = this;
-
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/styles').then(function (response) {
-        console.log('response is ', response.data);
-
-        _this4.setState({
-          images: response.data
-        });
-      })["catch"](function (err) {
-        console.log('received an error from get request in ATC', err);
-      });
     }
   }, {
     key: "render",
@@ -2490,11 +2492,15 @@ var App = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
 
       axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('/api/values').then(function (response) {
+        console.log('Response to GET/api/values: ', response.data.rows);
+
         _this2.setState({
-          results: response.data,
-          description: response.data[0].description,
-          price: response.data[0].price
+          results: response.data.rows,
+          description: response.data.rows[0].description,
+          price: response.data.rows[0].price
         });
+      })["catch"](function (error) {
+        console.error('Error in index.jsx GET/api/values: ', error);
       });
     }
   }, {

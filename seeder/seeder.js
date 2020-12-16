@@ -1,38 +1,87 @@
-const mysql = require('mysql');
-const config = require('../db/config.js');
+/* eslint-disable no-console */
+/* eslint-disable no-plusplus */
 const faker = require('faker');
-const connection = mysql.createConnection(config);
+const papa = require('papaparse');
+const fs = require('fs');
 
-for(var i = 0; i < 100; i++) {
-    var randomPrice = faker.random.float();
-    var randomDescription = faker.commerce.productDescription();
-    var sql = 'INSERT INTO Items (description, price) VALUES (?, ?)';
-    var toInsert = [randomDescription, randomPrice];
-    connection.query(sql, toInsert, function(err, response) {
-      if(err) {
-        console.log('couldn\'t connect to the database from seeder.js ');
-      }
-      console.log('successfully inserted items to database via seeder.js');
-    });
-}
+const makeCSV = (data) => papa.unparse(data);
 
-for(var i = 0; i < 100; i++) {
-
-  var style = faker.commerce.color();
-  let image = `https://guitarimages.s3-us-west-2.amazonaws.com/Guitar_Image${i}.jpg`;
-  var quantity = faker.random.number(1, 10);
-  var sql = 'INSERT INTO Styles (style, image_url, quantity) VALUES (?, ?, ?)';
-  var toInsert = [style, image, quantity];
-
-  connection.query(sql, toInsert, function(err, response) {
-    if(err) {
-      console.log('Could not insert items into Styles database');
+const removeCommas = (string) => {
+  const stringArr = string.split('');
+  for (let i = 0; i < stringArr.length; i++) {
+    if (stringArr[i] === ',') {
+      stringArr[i] = ';';
     }
-    console.log('successfully inserted items into Styles database');
-  });
-}
+  }
+  return stringArr.join('');
+};
 
+const makeItem = (id) => {
+  const item = [];
+  const description = removeCommas(faker.commerce.productDescription());
+  item.push(id);
+  item.push(description);
+  item.push(faker.random.float());
+  return item;
+};
 
+const makeStyle = (num, id) => {
+  const style = [];
+  style.push(id);
+  style.push(faker.commerce.color());
+  style.push(Math.floor(Math.random() * 12));
+  style.push(`https://guitar-centaur.s3.us-east-2.amazonaws.com/guitar${num}.jpeg`);
+  return style;
+};
 
+const generateDataLine = (id, type) => {
+  let CSVLine;
+  if (type === 'item') {
+    const item = [];
+    item.push(makeItem(id));
+    CSVLine = makeCSV(item);
+  } else if (type === 'style') {
+    const style = [];
+    style.push(makeStyle((Math.floor((Math.random() * 109)) + 1), id));
+    CSVLine = makeCSV(style);
+  }
+  return CSVLine;
+};
 
+const writeCSV = (size, Filename, type, callback = () => {}) => {
+  const File = fs.createWriteStream(Filename);
+  let i = size;
+  const write = () => {
+    let canWrite = true;
+    do {
+      i--;
+      if (i === 0) {
+        const CSV = generateDataLine(i, type);
+        File.write(CSV, 'utf8', () => {
+          File.end();
+          callback(CSV);
+        });
+      } else {
+        let CSV = generateDataLine(i, type);
+        CSV += '\n';
+        canWrite = File.write(CSV, 'utf8');
+      }
+    } while (i > 0 && canWrite);
 
+    if (i > 0 && !canWrite) {
+      if (i % 10000 === 0) { console.log('      draining write stream'); }
+      File.once('drain', write);
+    }
+  };
+
+  write();
+};
+
+module.exports = {
+  makeCSV,
+  generateDataLine,
+  makeItem,
+  makeStyle,
+  writeCSV,
+  removeCommas,
+};

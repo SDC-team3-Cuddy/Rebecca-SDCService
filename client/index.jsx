@@ -8,34 +8,37 @@ import LessonPlans from './components/LessonPlans.jsx';
 import styles from './css/index.module.css';
 
 class App extends React.Component {
-
-  constructor (props) {
-    super (props);
+  constructor(props) {
+    super(props);
     this.state = {
       results: [],
       description: '',
-      price: ''
-    }
+      price: '',
+    };
     this.componentDidMount = this.componentDidMount.bind(this);
   }
 
-  componentDidMount () {
+  componentDidMount() {
     axios.get('/api/values')
-      .then(response => {
+      .then((response) => {
+        console.log('Response to GET/api/values: ', response.data.rows);
         this.setState({
-           results: response.data,
-           description: response.data[0].description,
-           price: response.data[0].price
+          results: response.data.rows,
+          description: response.data.rows[0].description,
+          price: response.data.rows[0].price,
         });
+      })
+      .catch((error) => {
+        console.error('Error in index.jsx GET/api/values: ', error);
       });
   }
 
-  render () {
+  render() {
     return (
       <>
-      <div className={styles.container}>
+        <div className={styles.container}>
           <AddToCart description={this.state.description} prices={this.state.price} questions={Questions} />
-      </div>
+        </div>
 
       </>
     );

@@ -3,7 +3,6 @@ import React from 'react';
 import styles from '../css/Style.module.css';
 
 class Style extends React.Component {
-
   constructor(props) {
     super(props);
   }
